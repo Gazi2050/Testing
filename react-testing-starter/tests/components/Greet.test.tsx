@@ -1,12 +1,13 @@
 import { render, screen } from '@testing-library/react'
 import { it, expect, describe } from 'vitest'
 import Greet from '../../src/components/Greet'
-
+import '@testing-library/jest-dom/vitest'
 describe('Greet', () => {
-    it('should render Hello with the name when name is provided', () => {
-        render(<Greet name='araf' />);
+    it('should render login button when name is not provided', () => {
+        render(<Greet />);
 
-        const heading = screen.getAllByRole('heading');
-        expect(heading)
+        const button = screen.getByRole('button');
+        expect(button).toBeInTheDocument();
+        expect(button).toHaveTextContent(/login/i);
     })
 })
